@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="description"
+            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
+        <meta name="keywords"
+            content="PrintHub, Bluetooth Printer, USB Printer, Receipt Printer">
+        <meta name="author" content="Dede Fuji Abdul">
+        <meta name="robots" content="index, follow">
+        <meta name="revisit-after" content="7 days">
+        <meta name="googlebot"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+        <meta name="bingbot"
+            content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+        <meta property="og:title" content="PrintHub">
+        <meta property="og:description"
+            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://defuj.github.io/printhub">
+        <meta property="og:image"
+            content="https://defuj.github.io/printhub/assets/images/printhub.webp">
+        <meta property="og:site_name" content="PrintHub">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="PrintHub">
+        <meta name="twitter:description"
+            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
+        <meta name="twitter:image"
+            content="https://defuj.github.io/printhub/assets/images/printhub.webp">
+        <meta name="twitter:image:alt" content="PrintHub">
+        <meta name="twitter:site" content="@defuj17">
+        <link rel="icon" href="./assets/favicon.ico"
+            type="image/x-icon">
+        <link rel="canonical" href="https://defuj.github.io/printhub">
+
+        <title>PrintHub</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-gray-100 p-4">
+        <div class="bg-white p-4 rounded shadow-md w-[80mm]">
+            <!-- Print Header -->
+            <div class="text-center">
+                <h1 class="text-xl font-bold">SADIGIT</h1>
+                <p>Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel.,
+                    Kabupaten Sumedang, Jawa Barat 45311</p>
+                <p>0852-2299-9699</p>
+            </div>
+            <hr class="my-2">
+            <div class="text-center">
+                <p>No.Transaksi: SDGT-ONL-0001</p>
+                <p>Kasir: Otongsuke</p>
+                <p>2024-10-23 10:20:18</p>
+            </div>
+            <hr class="my-2">
+            <!-- Print Items -->
+            <div>
+                <div class="flex justify-between">
+                    <span>Item Sample-0</span>
+                    <span>1 pcs x 10.000</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Item Sample-1</span>
+                    <span>1 pcs x 10.000</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Item Sample-2</span>
+                    <span>1 pcs x 10.000</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Item Sample-3</span>
+                    <span>1 pcs x 10.000</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Item Sample-4</span>
+                    <span>1 pcs x 10.000</span>
+                </div>
+            </div>
+            <hr class="my-2">
+            <!-- Print Total -->
+            <div class="flex justify-between">
+                <span>Total :</span>
+                <span>50.000</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Bayar :</span>
+                <span>100.000</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Kembali :</span>
+                <span>50.000</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Metode :</span>
+                <span>Tunai</span>
+            </div>
+            <hr class="my-2">
+            <!-- Print Footer -->
+            <div class="text-center">
+                <p>Terimakasih sudah mencoba Follow IG @sadigit.id</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col space-y-2 mt-4 w-[80mm]">
+            <button id="connectToBluetoothPrinter"
+                class="rounded-lg px-4 py-2 bg-gray-400 text-white">Print with
+                Bluetooth
+                Printer</button>
+
+            <button id="connectToUsbPrinter"
+                class="rounded-lg px-4 py-2 bg-gray-600 text-white">Print with
+                USB Printer</button>
+        </div>
+
+        <p id="status"></p>
+        <p id="battery"></p>
+        <!-- <script
+            src="https://cdn.jsdelivr.net/npm/web-print@1.0/index.min.js"></script> -->
+
+        <script src="./lib/printer.js"></script>
+
+        <script>
+            async function startPrint(print) {
+                // Print Header
+                await print.writeText("SADIGIT", {
+                    align: "center",
+                    bold: true,
+                    size: "double",
+                });
+                await print.writeText(
+                    "Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel., Kabupaten Sumedang, Jawa Barat 45311",
+                    { align: "center" }
+                );
+                await print.writeText("0852-2299-9699", { align: "center" });
+                await print.writeLineBreak();
+                await print.writeText("No.Transaksi: SDGT-ONL-0001", {
+                    align: "center",
+                });
+                await print.writeText("Kasir: Otongsuke", { align: "center" });
+                await print.writeText("2024-10-23 10:20:18", { align: "center" });
+
+                // Print Items
+                await print.writeDashLine();
+                for (let i = 0; i < 5; i++) {
+                    await print.writeText("Item Sample-" + i, { align: "left" });
+                    await print.writeTextWith2Column("1 pcs x 10.000", "10.000");
+                }
+                await print.writeDashLine();
+
+                // Print Total
+                await print.writeTextWith2Column("Total :", "50.000");
+                await print.writeTextWith2Column("Bayar :", "100.000");
+                await print.writeTextWith2Column("Kembali :", "50.000");
+                await print.writeTextWith2Column("Metode :", "Tunai");
+
+                // Print Footer
+                await print.writeLineBreak();
+                await print.writeText(
+                    "Terimakasih sudah mencoba Follow IG @sadigit.id",
+                    { align: "center" }
+                );
+                await print.writeLineBreak(3);
+            }
+
+            document.getElementById('connectToBluetoothPrinter').addEventListener('click', () => {
+                let printer = new PrintHub({
+                    paperSize: '58mm',
+                    printerType: 'bluetooth',
+                });
+                printer.connectToPrint({
+                    onReady: (print) => startPrint(print),
+                    onFailed: (message) => {
+                        console.log(message);
+                    }
+                });
+            });
+
+            document.getElementById('connectToUsbPrinter').addEventListener('click', () => {
+                let printer = new PrintHub({
+                    paperSize: '58mm',
+                    printerType: 'usb',
+                });
+                printer.connectToPrint({
+                    onReady: (print) => startPrint(print),
+                    onFailed: (message) => {
+                        console.log(message);
+                    }
+                });
+            });
+    </script>
+    </body>
+</html>

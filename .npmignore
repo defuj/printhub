@@ -1,0 +1,11 @@
+index.html
+printer.js
+printer.min.js
+.gitignore
+package.json
+package-lock.json
+.git
+node_modules
+.vscode
+.github
+assets
