@@ -40,6 +40,47 @@
 
         <title>PrintHub</title>
         <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                            clifford: '#da373d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['MerchantCopy', 'sans-serif'],
+                    },
+                }
+            }
+        </script>
+        <style type="text/tailwindcss">
+            @layer base {
+                @font-face {
+                    font-family: 'MerchantCopy';
+                    font-style: normal;
+                    font-weight: 400;
+                    font-display: swap;
+                    src: url(/assets/fonts/MerchantCopy.ttf) format('truetype');
+                }
+
+                @font-face {
+                    font-family: 'MerchantCopy';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-display: swap;
+                    src: url(/assets/fonts/MerchantCopyDoublesize.ttf) format('truetype');
+                }
+
+                @font-face {
+                    font-family: 'MerchantCopy';
+                    font-style: normal;
+                    font-weight: 800;
+                    font-display: swap;
+                    src: url(/assets/fonts/MerchantCopyWide.ttf) format('truetype');
+                }
+            }
+        </style>
     </head>
     <body
         class="bg-gray-100 p-4 justify-center items-center w-full flex flex-col">
@@ -51,13 +92,12 @@
                     Kabupaten Sumedang, Jawa Barat 45311</p>
                 <p>0852-2299-9699</p>
             </div>
-            <hr class="my-2">
-            <div class="text-center">
+            <div class="text-center mt-2">
                 <p>No.Transaksi: SDGT-ONL-0001</p>
                 <p>Kasir: Otongsuke</p>
                 <p>2024-10-23 10:20:18</p>
             </div>
-            <hr class="my-2">
+            <hr class="my-2 border-t-2 border-dashed">
             <!-- Print Items -->
             <div>
                 <div class="flex justify-between">
@@ -81,7 +121,7 @@
                     <span>1 pcs x 10.000</span>
                 </div>
             </div>
-            <hr class="my-2">
+            <hr class="my-2 border-t-2 border-dashed">
             <!-- Print Total -->
             <div class="flex justify-between">
                 <span>Total :</span>
@@ -99,9 +139,8 @@
                 <span>Metode :</span>
                 <span>Tunai</span>
             </div>
-            <hr class="my-2">
             <!-- Print Footer -->
-            <div class="text-center">
+            <div class="text-center my-2">
                 <p>Terimakasih sudah mencoba Follow IG @sadigit.id</p>
             </div>
         </div>
