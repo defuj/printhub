@@ -1,2 +1,5 @@
 printer.js
 printer.min.js
+node_modules
+npm-debug.log
+.npmignore
