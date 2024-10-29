@@ -3,6 +3,8 @@
 [![npm version](https://badge.fury.io/js/printhub.svg)](https://badge.fury.io/js/printhub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+![PrintHub](https://defuj.github.io/printhub/assets/images/printhub.webp)
+
 PrintHub adalah plugin JavaScript untuk mencetak teks menggunakan printer thermal Bluetooth atau USB Printer. Plugin ini mendukung dua ukuran kertas: "58mm" dan "80mm".
 
 ## Fitur
