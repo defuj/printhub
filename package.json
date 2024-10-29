@@ -1,6 +1,6 @@
 {
   "name": "printhub",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A javascript plugin for Bluetooth & USB printers.",
   "main": "lib/index.js",
   "scripts": {
