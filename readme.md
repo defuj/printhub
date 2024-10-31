@@ -257,6 +257,59 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 | `align`     | Menentukan perataan teks. Nilai yang didukung: "left", "center", "right". | `"left"`   |
 | `size`      | Menentukan ukuran teks. Nilai yang didukung: "normal", "double".          | `"normal"` |
 
+## Requirements for USB Printer
+
+### Windows
+
+1. Install [Zadig](https://zadig.akeo.ie/).
+2. Connect USB Printer to your computer.
+3. Open Zadig and select your USB Printer.
+4. Install WinUSB driver for your USB Printer.
+5. Done.
+
+### Linux
+
+1. Connect USB Printer to your computer.
+2. Open terminal and run `lsusb`.
+3. Find your USB Printer and note the vendor id and product id.
+4. Run `sudo modprobe usblp`.
+5. Run `sudo echo "ATTRS{idVendor}=="YOUR_VENDOR_ID", ATTRS{idProduct}=="YOUR_PRODUCT_ID", MODE="0666", GROUP="plugdev" > /etc/udev/rules.d/99-usb-printer.rules`.
+6. Run `sudo udevadm control --reload-rules`.
+7. Run `sudo udevadm trigger`.
+8. Done.
+
+### macOS
+
+1. Connect USB Printer to your computer.
+2. Open terminal and run `ls /dev/cu.*`.
+3. Find your USB Printer and note the device name.
+4. Run `sudo chmod
+5. Run `sudo chown
+6. Done.
+
+## Browser Support
+
+### Desktop
+
+| Browser | Version | Status |
+| ------- | ------- | ------ |
+| Chrome  | 61      | ✔️     |
+| Firefox | No      | ❌     |
+| Edge    | 79      | ✔️     |
+| Safari  | No      | ❌     |
+| Opera   | 48      | ✔️     |
+
+### Mobile
+
+| Browser | Version | Status |
+| ------- | ------- | ------ |
+| Chrome  | 61      | ✔️     |
+| Firefox | No      | ❌     |
+| Safari  | No      | ❌     |
+| Opera   | 45      | ✔️     |
+| Samsung | 8.0     | ✔️     |
+| WebView | No      | ❌     |
+
 ## Change Log
 
 ### v1.0.3
