@@ -44,7 +44,7 @@ const PrintHub = require("printhub");
 ### Menggunakan CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.3/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.4/lib/index.min.js"></script>
 ```
 
 ## Penggunaan
@@ -311,6 +311,10 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 | WebView | No      | ❌     |
 
 ## Change Log
+
+### v1.0.4
+
+- Add instructions for USB Printer on Windows, Linux, and macOS
 
 ### v1.0.3
 
