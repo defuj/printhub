@@ -44,7 +44,7 @@ const PrintHub = require("printhub");
 ### Menggunakan CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.3/lib/index.min.js"></script>
 ```
 
 ## Penggunaan
