@@ -256,3 +256,9 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 | `underline` | Menentukan apakah teks dicetak dengan garis bawah.                        | `false`    |
 | `align`     | Menentukan perataan teks. Nilai yang didukung: "left", "center", "right". | `"left"`   |
 | `size`      | Menentukan ukuran teks. Nilai yang didukung: "normal", "double".          | `"normal"` |
+
+## Change Log
+
+### v1.0.3
+
+- Fix USB Printer not working
