@@ -5,7 +5,7 @@
 
 ![PrintHub](https://defuj.github.io/printhub/assets/images/printhub.webp)
 
-PrintHub is a JavaScript plugin for printing text using a Bluetooth or USB thermal printer. This plugin supports two paper sizes: "58mm" and "80mm". Demo: [PrintHub Demo](https://defuj.github.io/printhub/)
+PrintHub is a JavaScript plugin for printing text using a Bluetooth or USB thermal printer. Demo: [PrintHub Demo](https://defuj.github.io/printhub/)
 
 ## Features
 
@@ -44,24 +44,24 @@ const PrintHub = require("printhub");
 ### Using CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.4/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.5/lib/index.min.js"></script>
 ```
 
 ## Usage
 
 ### Creating a PrintHub Instance
 
-You can create an instance of PrintHub with or without specifying the desired paper size. Supported paper sizes are "58mm" and "80mm". If the paper size is not specified, the default is "58mm".
+You can create an instance of PrintHub with or without specifying the desired paper size. Supported paper sizes are "58" and "80". If the paper size is not specified, the default is "58".
 
-1. Creating a PrintHub instance with "80mm" paper size
+1. Creating a PrintHub instance with "80" paper size
 
    ```javascript
    let printer = new PrintHub({
-     paperSize: "80mm",
+     paperSize: "80",
    });
    ```
 
-2. Creating a PrintHub instance with "58mm" paper size
+2. Creating a PrintHub instance with "58" paper size
 
    ```javascript
    let printer = new PrintHub();
@@ -311,6 +311,10 @@ Use the `connectToPrint` method to connect to a Bluetooth printer and print text
 | WebView | No      | ❌     |
 
 ## Change Log
+
+### v1.0.5
+
+- Update paper size from "58mm" and "80mm" to "58" and "80"
 
 ### v1.0.4
 
