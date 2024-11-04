@@ -5,31 +5,31 @@
 
 ![PrintHub](https://defuj.github.io/printhub/assets/images/printhub.webp)
 
-PrintHub adalah plugin JavaScript untuk mencetak teks menggunakan printer thermal Bluetooth atau USB Printer. Plugin ini mendukung dua ukuran kertas: "58mm" dan "80mm".
+PrintHub is a JavaScript plugin for printing text using a Bluetooth or USB thermal printer. This plugin supports two paper sizes: "58mm" and "80mm". Demo: [PrintHub Demo](https://defuj.github.io/printhub/)
 
-## Fitur
+## Features
 
-1. Mencetak teks dengan berbagai opsi seperti huruf tebal, garis bawah, perataan, dan ukuran teks.
-2. Mencetak teks dengan dua kolom.
-3. Mencetak garis putus-putus.
-4. Mencetak baris baru.
-5. Mendukung dua ukuran kertas: "58mm" dan "80mm".
-6. Mendukung koneksi ke printer thermal Bluetooth.
-7. Mendukung browser modern seperti Chrome, Firefox, dan Edge.
-8. Mendukung Node.js.
-9. Mendukung penggunaan CDN.
-10. Mendukung penggunaan NPM.
-11. Mendukung penggunaan ES6.
+1. Print text with various options like bold, underline, alignment, and text size.
+2. Print text in two columns.
+3. Print dashed lines.
+4. Print line breaks.
+5. Supports two paper sizes: "58mm" and "80mm".
+6. Supports connecting to Bluetooth thermal printers.
+7. Compatible with modern browsers such as Chrome, Firefox, and Edge.
+8. Node.js compatible.
+9. Supports usage via CDN.
+10. Supports usage via NPM.
+11. ES6 compatible.
 
-## Instalasi
+## Installation
 
-### Menggunakan NPM
+### Using NPM
 
 ```bash
 npm install printhub
 ```
 
-import atau require PrintHub ke dalam proyek Anda.
+Import or require PrintHub into your project.
 
 ```javascript
 import PrintHub from "printhub";
@@ -41,64 +41,64 @@ or
 const PrintHub = require("printhub");
 ```
 
-### Menggunakan CDN
+### Using CDN
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/printhub@1.0.4/lib/index.min.js"></script>
 ```
 
-## Penggunaan
+## Usage
 
-### Membuat Instance dari PrintHub
+### Creating a PrintHub Instance
 
-Anda dapat membuat instance dari PrintHub dengan atau tanpa menentukan ukuran kertas yang diinginkan. Ukuran kertas yang didukung adalah "58mm" dan "80mm". Jika ukuran kertas tidak ditentukan, ukuran kertas default adalah "58mm".
+You can create an instance of PrintHub with or without specifying the desired paper size. Supported paper sizes are "58mm" and "80mm". If the paper size is not specified, the default is "58mm".
 
-1. Membuat Instance PrintHub dengan Ukuran Kertas "80mm"
+1. Creating a PrintHub instance with "80mm" paper size
 
-```javascript
-let printer = new PrintHub({
-  paperSize: "80mm",
-});
-```
+   ```javascript
+   let printer = new PrintHub({
+     paperSize: "80mm",
+   });
+   ```
 
-2. Membuat Instance PrintHub dengan Ukuran Kertas "58mm"
+2. Creating a PrintHub instance with "58mm" paper size
 
-```javascript
-let printer = new PrintHub();
-```
+   ```javascript
+   let printer = new PrintHub();
+   ```
 
-### Memilih Jenis Printer
+### Selecting Printer Type
 
-Anda dapat memilih jenis printer yang akan digunakan. Jenis printer yang didukung adalah "bluetooth" dan "usb". Jika jenis printer tidak ditentukan, jenis printer default adalah "bluetooth".
+You can select the type of printer to use. Supported types are "bluetooth" and "usb". If the printer type is not specified, the default is "bluetooth".
 
-1. Memilih Jenis Printer "bluetooth"
+1. Selecting "bluetooth" printer type
 
-```javascript
-let printer = new PrintHub({
-  printerType: "bluetooth",
-});
-```
+   ```javascript
+   let printer = new PrintHub({
+     printerType: "bluetooth",
+   });
+   ```
 
-2. Memilih Jenis Printer "usb"
+2. Selecting "usb" printer type
 
-```javascript
-let printer = new PrintHub({
-  printerType: "usb",
-});
-```
+   ```javascript
+   let printer = new PrintHub({
+     printerType: "usb",
+   });
+   ```
 
-### Menghubungkan ke Printer dan Mencetak Teks
+### Connecting to Printer and Printing Text
 
-Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan mencetak teks. Anda perlu menyediakan dua fungsi callback: `onReady` dan `onFailed`.
+Use the `connectToPrint` method to connect to a Bluetooth printer and print text. You need to provide two callback functions: `onReady` and `onFailed`.
 
-| Callback   | Deskripsi                                                                                                                             |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `onReady`  | Dipanggil ketika koneksi ke printer berhasil. Anda dapat menggunakan objek print yang diteruskan ke callback ini untuk mencetak teks. |
-| `onFailed` | Dipanggil ketika koneksi ke printer gagal. Anda dapat menggunakan parameter message untuk mendapatkan pesan error.                    |
+| Callback   | Description                                                                                                           |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| `onReady`  | Called when the printer connection is successful. You can use the print object passed to this callback to print text. |
+| `onFailed` | Called when the printer connection fails. You can use the message parameter to get the error message.                 |
 
-### Cara Menggunakan PrintHub
+### How to Use PrintHub
 
-1. Hubungkan ke printer dan cetak teks.
+1. Connect to the printer and print text.
 
    ```javascript
    printer.connectToPrint({
@@ -111,7 +111,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-2. Cetak teks dengan huruf tebal.
+2. Print bold text.
 
    ```javascript
    printer.connectToPrint({
@@ -124,7 +124,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-3. Cetak teks dengan garis bawah.
+3. Print underlined text.
 
    ```javascript
    printer.connectToPrint({
@@ -137,7 +137,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-4. Cetak teks dengan perataan.
+4. Print text with alignment.
 
    ```javascript
    printer.connectToPrint({
@@ -150,7 +150,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-5. Cetak teks dengan ukuran teks.
+5. Print text with a specific size.
 
    ```javascript
    printer.connectToPrint({
@@ -163,7 +163,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-6. Cetak teks dengan dua kolom.
+6. Print text in two columns.
 
    ```javascript
    printer.connectToPrint({
@@ -176,7 +176,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-7. Cetak garis putus-putus.
+7. Print dashed lines.
 
    ```javascript
    printer.connectToPrint({
@@ -189,7 +189,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-8. Cetak baris baru.
+8. Print line breaks.
 
    ```javascript
    printer.connectToPrint({
@@ -202,7 +202,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-9. Cetak teks dengan berbagai opsi.
+9. Print text with multiple options.
 
    ```javascript
    printer.connectToPrint({
@@ -220,7 +220,7 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
    });
    ```
 
-10. Cetak teks dengan berbagai opsi dan dua kolom.
+10. Print text with multiple options in two columns.
 
     ```javascript
     printer.connectToPrint({
@@ -240,37 +240,37 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 
 ### API
 
-| Metode                                        | Deskripsi                                                                  |
-| --------------------------------------------- | -------------------------------------------------------------------------- |
-| `writeLineBreak({ count = 1 })`               | Menulis baris baru.                                                        |
-| `writeDashLine()`                             | Menulis garis putus-putus.                                                 |
-| `writeTextWith2Column(text1, text2, options)` | Menulis teks dengan dua kolom.                                             |
-| `writeText(text, options)`                    | Menulis teks.                                                              |
-| `connectToPrint({ onReady, onFailed })`       | Menghubungkan ke printer dan memanggil callback `onReady` atau `onFailed`. |
+| Method                                        | Description                                                             |
+| --------------------------------------------- | ----------------------------------------------------------------------- |
+| `writeLineBreak({ count = 1 })`               | Writes a line break.                                                    |
+| `writeDashLine()`                             | Writes a dashed line.                                                   |
+| `writeTextWith2Column(text1, text2, options)` | Writes text in two columns.                                             |
+| `writeText(text, options)`                    | Writes text.                                                            |
+| `connectToPrint({ onReady, onFailed })`       | Connects to the printer and calls the `onReady` or `onFailed` callback. |
 
-### Opsi untuk Metode `writeText` dan `writeTextWith2Column`
+### Options for `writeText` and `writeTextWith2Column` Methods
 
-| Opsi        | Deskripsi                                                                 | Default    |
-| ----------- | ------------------------------------------------------------------------- | ---------- |
-| `bold`      | Menentukan apakah teks dicetak dengan huruf tebal.                        | `false`    |
-| `underline` | Menentukan apakah teks dicetak dengan garis bawah.                        | `false`    |
-| `align`     | Menentukan perataan teks. Nilai yang didukung: "left", "center", "right". | `"left"`   |
-| `size`      | Menentukan ukuran teks. Nilai yang didukung: "normal", "double".          | `"normal"` |
+| Option      | Description                                                            | Default  |
+| ----------- | ---------------------------------------------------------------------- | -------- |
+| `bold`      | Specifies whether the text is printed in bold.                         | `false`  |
+| `underline` | Specifies whether the text is printed with an underline.               | `false`  |
+| `align`     | Specifies text alignment. Supported values: "left", "center", "right". | `left`   |
+| `size`      | Specifies the text size. Supported values: "normal", "double".         | `normal` |
 
 ## Requirements for USB Printer
 
 ### Windows
 
 1. Install [Zadig](https://zadig.akeo.ie/).
-2. Connect USB Printer to your computer.
+2. Connect the USB Printer to your computer.
 3. Open Zadig and select your USB Printer.
-4. Install WinUSB driver for your USB Printer.
+4. Install the WinUSB driver for your USB Printer.
 5. Done.
 
 ### Linux
 
-1. Connect USB Printer to your computer.
-2. Open terminal and run `lsusb`.
+1. Connect the USB Printer to your computer.
+2. Open the terminal and run `lsusb`.
 3. Find your USB Printer and note the vendor id and product id.
 4. Run `sudo modprobe usblp`.
 5. Run `sudo echo "ATTRS{idVendor}=="YOUR_VENDOR_ID", ATTRS{idProduct}=="YOUR_PRODUCT_ID", MODE="0666", GROUP="plugdev" > /etc/udev/rules.d/99-usb-printer.rules`.
@@ -280,8 +280,8 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 
 ### macOS
 
-1. Connect USB Printer to your computer.
-2. Open terminal and run `ls /dev/cu.*`.
+1. Connect the USB Printer to your computer.
+2. Open the terminal and run `ls /dev/cu.*`.
 3. Find your USB Printer and note the device name.
 4. Run `sudo chmod
 5. Run `sudo chown
@@ -314,8 +314,8 @@ Gunakan metode `connectToPrint` untuk menghubungkan ke printer Bluetooth dan men
 
 ### v1.0.4
 
-- Add instructions for USB Printer on Windows, Linux, and macOS
+- Added instructions for USB Printer on Windows, Linux, and macOS
 
 ### v1.0.3
 
-- Fix USB Printer not working
+- Fixed USB Printer not working
