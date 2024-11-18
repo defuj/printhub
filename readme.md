@@ -44,7 +44,7 @@ const PrintHub = require("printhub");
 ### Using CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.5/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.6/lib/index.min.js"></script>
 ```
 
 ## Usage
@@ -311,6 +311,10 @@ Use the `connectToPrint` method to connect to a Bluetooth printer and print text
 | WebView | No      | ❌     |
 
 ## Change Log
+
+### v1.0.6
+
+- Remove unused code
 
 ### v1.0.5
 
