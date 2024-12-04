@@ -44,14 +44,34 @@ const PrintHub = require("printhub");
 ### Using CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.13/dist/index.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.14/dist/index.global.js"></script>
 ```
 
 ## Usage
 
-### Creating a PrintHub Instance
-
 You can create an instance of PrintHub with or without specifying the desired paper size. Supported paper sizes are "58" and "80". If the paper size is not specified, the default is "58".
+
+### Creating a PrintHub Instance from NPM
+
+1. Creating a PrintHub instance with "80" paper size
+
+   ```javascript
+   import PrintHub from "printhub";
+
+   let printer = new PrintHub();
+   ```
+
+   or
+
+   ```javascript
+   import PrintHub from "printhub";
+
+   let printer = new PrintHub({
+     paperSize: "80",
+   });
+   ```
+
+### Creating a PrintHub Instance from CDN
 
 1. Creating a PrintHub instance with "80" paper size
 
@@ -67,25 +87,33 @@ You can create an instance of PrintHub with or without specifying the desired pa
    let printer = new PrintHub.init();
    ```
 
+   or you can use the default paper size
+
+   ```javascript
+   let printer = new PrintHub.init({
+     paperSize: "58",
+   });
+   ```
+
 ### Selecting Printer Type
 
-You can select the type of printer to use. Supported types are "bluetooth" and "usb". If the printer type is not specified, the default is "bluetooth".
+You can select the type of printer to use. Supported types are `bluetooth` and `usb`. If the printer type is not specified, the default is `bluetooth`.
 
-1. Selecting "bluetooth" printer type
+1. NPM Usage
 
-   ```javascript
-   let printer = new PrintHub.init({
-     printerType: "bluetooth",
-   });
-   ```
+```javascript
+let printer = new PrintHub({
+  printerType: "usb",
+});
+```
 
-2. Selecting "usb" printer type
+2. CDN Usage
 
-   ```javascript
-   let printer = new PrintHub.init({
-     printerType: "usb",
-   });
-   ```
+```javascript
+let printer = new PrintHub.init({
+  printerType: "usb",
+});
+```
 
 ### Connecting to Printer and Printing Text
 
@@ -100,16 +128,16 @@ Use the `connectToPrint` method to connect to a Bluetooth printer and print text
 
 1. Connect to the printer and print text.
 
-   ```javascript
-   printer.connectToPrint({
-     onReady: async (print) => {
-       await print.writeText("Hello, World!");
-     },
-     onFailed: (message) => {
-       console.log(message);
-     },
-   });
-   ```
+```javascript
+printer.connectToPrint({
+  onReady: async (print) => {
+    await print.writeText("Hello, World!");
+  },
+  onFailed: (message) => {
+    console.log(message);
+  },
+});
+```
 
 2. Print bold text.
 
@@ -311,6 +339,10 @@ Use the `connectToPrint` method to connect to a Bluetooth printer and print text
 | WebView | No      | ❌     |
 
 ## Change Log
+
+### v1.0.14
+
+- Update README.md
 
 ### v1.0.13
 
