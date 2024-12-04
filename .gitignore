@@ -4,3 +4,4 @@ node_modules
 npm-debug.log
 .npmignore
 .DS_Store
+/lib
