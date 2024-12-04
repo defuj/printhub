@@ -159,7 +159,7 @@
         <p id="status"></p>
         <p id="battery"></p>
         <script
-            src="https://cdn.jsdelivr.net/npm/printhub@1.0.7/lib/index.min.js"></script>
+            src="https://cdn.jsdelivr.net/npm/printhub@1.0.13/dist/index.global.js"></script>
 
         <script>
             async function startPrint(print) {
@@ -205,7 +205,7 @@
             }
 
             document.getElementById('connectToBluetoothPrinter').addEventListener('click', () => {
-                let printer = new PrintHub({
+                let printer = new PrintHub.init({
                     paperSize: '58',
                     printerType: 'bluetooth',
                 });
@@ -218,7 +218,7 @@
             });
 
             document.getElementById('connectToUsbPrinter').addEventListener('click', () => {
-                let printer = new PrintHub({
+                let printer = new PrintHub.init({
                     paperSize: '58',
                     printerType: 'usb',
                 });

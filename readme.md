@@ -1,9 +1,9 @@
+![PrintHub](https://defuj.github.io/printhub/assets/images/printhub.webp)
+
 # PrintHub
 
 [![npm version](https://badge.fury.io/js/printhub.svg)](https://badge.fury.io/js/printhub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-![PrintHub](https://defuj.github.io/printhub/assets/images/printhub.webp)
 
 PrintHub is a JavaScript plugin for printing text using a Bluetooth or USB thermal printer. Demo: [PrintHub Demo](https://defuj.github.io/printhub/)
 
@@ -44,7 +44,7 @@ const PrintHub = require("printhub");
 ### Using CDN
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.7/lib/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/printhub@1.0.13/dist/index.global.js"></script>
 ```
 
 ## Usage
@@ -56,7 +56,7 @@ You can create an instance of PrintHub with or without specifying the desired pa
 1. Creating a PrintHub instance with "80" paper size
 
    ```javascript
-   let printer = new PrintHub({
+   let printer = new PrintHub.init({
      paperSize: "80",
    });
    ```
@@ -64,7 +64,7 @@ You can create an instance of PrintHub with or without specifying the desired pa
 2. Creating a PrintHub instance with "58" paper size
 
    ```javascript
-   let printer = new PrintHub();
+   let printer = new PrintHub.init();
    ```
 
 ### Selecting Printer Type
@@ -74,7 +74,7 @@ You can select the type of printer to use. Supported types are "bluetooth" and "
 1. Selecting "bluetooth" printer type
 
    ```javascript
-   let printer = new PrintHub({
+   let printer = new PrintHub.init({
      printerType: "bluetooth",
    });
    ```
@@ -82,7 +82,7 @@ You can select the type of printer to use. Supported types are "bluetooth" and "
 2. Selecting "usb" printer type
 
    ```javascript
-   let printer = new PrintHub({
+   let printer = new PrintHub.init({
      printerType: "usb",
    });
    ```
@@ -311,6 +311,11 @@ Use the `connectToPrint` method to connect to a Bluetooth printer and print text
 | WebView | No      | ❌     |
 
 ## Change Log
+
+### v1.0.13
+
+- Add support for Node.js (typescript, es6, commonjs)
+- Change the way to use instance of PrintHub
 
 ### v1.0.7
 
