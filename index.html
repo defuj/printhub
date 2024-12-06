@@ -156,14 +156,20 @@
                 </select>
             </div>
 
-            <button id="connectToBluetoothPrinter"
-                class="rounded-lg px-4 py-2 bg-gray-400 text-white">Print with
-                Bluetooth
-                Printer</button>
+            <!-- select printer type -->
+            <div class="flex flex-col">
+                <label for="printerType">Printer Type:</label>
+                <select id="printerType"
+                    class="rounded-lg px-4 py-4 bg-gray-200 text-lg">
+                    <option value="bluetooth" selected>Bluetooth Printer
+                        (Thermal)</option>
+                    <option value="usb">USB Printer (Thermal)</option>
+                </select>
+            </div>
 
-            <button id="connectToUsbPrinter"
+            <button id="connectToPrinter"
                 class="rounded-lg px-4 py-2 bg-gray-600 text-white">Print with
-                USB Printer</button>
+                Bluetooth Printer</button>
         </div>
 
         <p id="status"></p>
@@ -172,14 +178,19 @@
             src="https://cdn.jsdelivr.net/npm/printhub@1.0.14/dist/index.global.js"></script>
 
         <script>
-            let papers = ['58', '80'];
             let paperSize = '58';
+            let printerType = 'bluetooth';
 
             document.getElementById('paperSize').addEventListener('change', (e) => {
                 paperSize = e.target.value;
-
                 console.log('Paper Size Changes',paperSize);
-                
+            });
+
+            document.getElementById('printerType').addEventListener('change', (e) => {
+                printerType = e.target.value;
+                console.log('Printer Type Changes',printerType);
+
+                document.getElementById('connectToPrinter').textContent = `Print with ${printerType === 'bluetooth' ? 'Bluetooth' : 'USB'} Printer`;
             });
 
             async function startPrint(print) {
@@ -225,24 +236,10 @@
                 await print.writeLineBreak(3);
             }
 
-            document.getElementById('connectToBluetoothPrinter').addEventListener('click', () => {
+            document.getElementById('connectToPrinter').addEventListener('click', () => {
                 let printer = new PrintHub.init({
                     paperSize: paperSize,
-                    printerType: 'bluetooth',
-                });
-                printer.connectToPrint({
-                    onReady: (print) => startPrint(print),
-                    onFailed: (message) => {
-                        console.log(message);
-                        window.alert(message);
-                    }
-                });
-            });
-
-            document.getElementById('connectToUsbPrinter').addEventListener('click', () => {
-                let printer = new PrintHub.init({
-                    paperSize: paperSize,
-                    printerType: 'usb',
+                    printerType: printerType,
                 });
                 printer.connectToPrint({
                     onReady: (print) => startPrint(print),
