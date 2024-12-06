@@ -146,6 +146,16 @@
         </div>
 
         <div class="flex flex-col space-y-2 mt-4 w-[80mm]">
+            <!-- select paper size -->
+            <div class="flex flex-col">
+                <label for="paperSize">Paper Size:</label>
+                <select id="paperSize"
+                    class="rounded-lg px-4 py-4 bg-gray-200 text-lg">
+                    <option value="58" selected>58mm</option>
+                    <option value="80">80mm</option>
+                </select>
+            </div>
+
             <button id="connectToBluetoothPrinter"
                 class="rounded-lg px-4 py-2 bg-gray-400 text-white">Print with
                 Bluetooth
@@ -162,12 +172,23 @@
             src="https://cdn.jsdelivr.net/npm/printhub@1.0.14/dist/index.global.js"></script>
 
         <script>
+            let papers = ['58', '80'];
+            let paperSize = '58';
+
+            document.getElementById('paperSize').addEventListener('change', (e) => {
+                paperSize = e.target.value;
+
+                console.log('Paper Size Changes',paperSize);
+                
+            });
+
             async function startPrint(print) {
                 // Print Header
                 await print.writeText("SADIGIT", {
                     align: "center",
                     bold: true,
                     size: "double",
+                    paperSize: paperSize,
                 });
                 await print.writeText(
                     "Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel., Kabupaten Sumedang, Jawa Barat 45311",
@@ -206,7 +227,7 @@
 
             document.getElementById('connectToBluetoothPrinter').addEventListener('click', () => {
                 let printer = new PrintHub.init({
-                    paperSize: '58',
+                    paperSize: paperSize,
                     printerType: 'bluetooth',
                 });
                 printer.connectToPrint({
@@ -219,7 +240,7 @@
 
             document.getElementById('connectToUsbPrinter').addEventListener('click', () => {
                 let printer = new PrintHub.init({
-                    paperSize: '58',
+                    paperSize: paperSize,
                     printerType: 'usb',
                 });
                 printer.connectToPrint({
