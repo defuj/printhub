@@ -7,7 +7,7 @@
         <meta name="description"
             content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
         <meta name="keywords"
-            content="PrintHub, Bluetooth Printer, USB Printer, Receipt Printer">
+            content="PrintHub, Bluetooth Printer, USB Printer, Receipt Printer, QR Code, Barcode">
         <meta name="author" content="Dede Fuji Abdul">
         <meta name="robots" content="index, follow">
         <meta name="revisit-after" content="7 days">
@@ -15,9 +15,9 @@
             content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
         <meta name="bingbot"
             content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-        <meta property="og:title" content="PrintHub">
+        <meta property="og:title" content="PrintHub - Thermal Printer Library">
         <meta property="og:description"
-            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
+            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer. Support QR Code and Barcode!">
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://defuj.github.io/printhub">
         <meta property="og:image"
@@ -27,18 +27,19 @@
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="PrintHub">
+        <meta name="twitter:title" content="PrintHub - Thermal Printer Library">
         <meta name="twitter:description"
-            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer.">
+            content="PrintHub is a simple library to print receipt with Bluetooth and USB printer. Support QR Code and Barcode!">
         <meta name="twitter:image"
             content="https://defuj.github.io/printhub/assets/images/printhub.webp">
         <meta name="twitter:image:alt" content="PrintHub">
         <meta name="twitter:site" content="@defuj17">
-        <link rel="icon" href="./assets/favicon.ico"
+        <link rel="icon"
+            href="https://defuj.github.io/printhub/assets/favicon.ico"
             type="image/x-icon">
         <link rel="canonical" href="https://defuj.github.io/printhub">
 
-        <title>PrintHub</title>
+        <title>PrintHub - Thermal Printer Demo</title>
         <script src="https://cdn.tailwindcss.com"></script>
         <script>
             tailwind.config = {
@@ -61,7 +62,7 @@
                     font-style: normal;
                     font-weight: 400;
                     font-display: swap;
-                    src: url(/assets/fonts/MerchantCopy.ttf) format('truetype');
+                    src: url('https://defuj.github.io/assets/fonts/MerchantCopy.ttf') format('truetype');
                 }
 
                 @font-face {
@@ -69,7 +70,7 @@
                     font-style: normal;
                     font-weight: 700;
                     font-display: swap;
-                    src: url(/assets/fonts/MerchantCopyDoublesize.ttf) format('truetype');
+                    src: url('https://defuj.github.io/assets/fonts/MerchantCopyDoublesize.ttf') format('truetype');
                 }
 
                 @font-face {
@@ -77,185 +78,627 @@
                     font-style: normal;
                     font-weight: 800;
                     font-display: swap;
-                    src: url(/assets/fonts/MerchantCopyWide.ttf) format('truetype');
+                    src: url('https://defuj.github.io/assets/fonts/MerchantCopyWide.ttf') format('truetype');
                 }
+            }
+            
+            .receipt-preview {
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            }
+            
+            .demo-btn {
+                transition: all 0.3s ease;
+            }
+            
+            .demo-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             }
         </style>
     </head>
     <body
-        class="bg-gray-100 p-4 justify-center items-center w-full flex flex-col">
-        <div class="bg-white p-4 rounded shadow-md w-[80mm]">
-            <!-- Print Header -->
-            <div class="text-center">
-                <img class="mx-auto h-16"
-                    src="https://www.sadigit.co.id/wp-content/uploads/2021/10/cropped-sadigit-logo.png"
-                    alt="Logo">
-                <h1 class="text-xl font-bold">SADIGIT</h1>
-                <p>Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel.,
-                    Kabupaten Sumedang, Jawa Barat 45311</p>
-                <p>0852-2299-9699</p>
-            </div>
-            <div class="text-center mt-2">
-                <p>No.Transaksi: SDGT-ONL-0001</p>
-                <p>Kasir: Otongsuke</p>
-                <p>2024-10-23 10:20:18</p>
-            </div>
-            <hr class="my-2 border-t-2 border-dashed">
-            <!-- Print Items -->
-            <div>
-                <div class="flex justify-between">
-                    <span>Item Sample-0</span>
-                    <span>1 pcs x 10.000</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Item Sample-1</span>
-                    <span>1 pcs x 10.000</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Item Sample-2</span>
-                    <span>1 pcs x 10.000</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Item Sample-3</span>
-                    <span>1 pcs x 10.000</span>
-                </div>
-                <div class="flex justify-between">
-                    <span>Item Sample-4</span>
-                    <span>1 pcs x 10.000</span>
-                </div>
-            </div>
-            <hr class="my-2 border-t-2 border-dashed">
-            <!-- Print Total -->
-            <div class="flex justify-between">
-                <span>Total :</span>
-                <span>50.000</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Bayar :</span>
-                <span>100.000</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Kembali :</span>
-                <span>50.000</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Metode :</span>
-                <span>Tunai</span>
-            </div>
-            <!-- Print Footer -->
-            <div class="text-center my-2">
-                <p>Terimakasih sudah mencoba Follow IG @sadigit.id</p>
+        class="flex flex-col items-center justify-start w-full min-h-screen p-4 bg-gradient-to-br from-gray-100 to-gray-200">
+
+        <!-- Header -->
+        <div class="w-full max-w-6xl mb-8">
+            <div class="text-center mb-4">
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">🖨️ PrintHub
+                    Demo</h1>
+                <p class="text-gray-600">Thermal Printer Library with QR Code &
+                    Barcode Support</p>
+                <p class="text-sm text-gray-500 mt-2">v1.2.1 - Full Featured
+                    Demo</p>
             </div>
         </div>
 
-        <div class="flex flex-col space-y-2 mt-4 w-[80mm]">
-            <!-- select paper size -->
-            <div class="flex flex-col">
-                <label for="paperSize">Paper Size:</label>
-                <select id="paperSize"
-                    class="rounded-lg px-4 py-4 bg-gray-200 text-lg">
-                    <option value="58" selected>58mm</option>
-                    <option value="80">80mm</option>
-                </select>
+        <!-- Main Container -->
+        <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+            <!-- Left Column - Receipt Preview -->
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">📄
+                    Receipt Preview</h2>
+
+                <div
+                    class="receipt-preview bg-white p-4 rounded shadow-md w-full max-w-[80mm] mx-auto">
+                    <!-- Print Header -->
+                    <div class="text-center">
+                        <img class="mx-auto h-16"
+                            src="https://www.sadigit.co.id/wp-content/uploads/2021/10/cropped-sadigit-logo.png"
+                            alt="Logo">
+                        <h1 class="text-xl font-bold">SADIGIT</h1>
+                        <p class="text-sm">Jl. Kutamaya No.Ruko A, Kotakulon</p>
+                        <p class="text-sm">Kec. Sumedang Sel., Sumedang
+                            45311</p>
+                        <p class="text-sm">0852-2299-9699</p>
+                    </div>
+                    <div class="mt-2 text-center text-sm">
+                        <p>No.Transaksi: SDGT-ONL-0001</p>
+                        <p>Kasir: Otongsuke</p>
+                        <p>2024-10-23 10:20:18</p>
+                    </div>
+                    <hr class="my-2 border-t-2 border-dashed">
+
+                    <!-- Print Items -->
+                    <div class="text-sm">
+                        <div class="flex justify-between">
+                            <span>Nasi Goreng</span>
+                            <span>Rp 25.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Es Teh Manis</span>
+                            <span>Rp 5.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Ayam Bakar</span>
+                            <span>Rp 30.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Sambal Extra</span>
+                            <span>Rp 3.000</span>
+                        </div>
+                    </div>
+                    <hr class="my-2 border-t-2 border-dashed">
+
+                    <!-- Print Total -->
+                    <div class="text-sm">
+                        <div class="flex justify-between">
+                            <span>Subtotal:</span>
+                            <span>Rp 63.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Pajak (10%):</span>
+                            <span>Rp 6.300</span>
+                        </div>
+                        <div class="flex justify-between font-bold">
+                            <span>TOTAL:</span>
+                            <span>Rp 69.300</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Bayar:</span>
+                            <span>Rp 100.000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Kembali:</span>
+                            <span>Rp 30.700</span>
+                        </div>
+                    </div>
+
+                    <!-- QR/Barcode Placeholder -->
+                    <div class="my-3 text-center">
+                        <div
+                            class="bg-gray-200 h-24 flex items-center justify-center text-gray-500 text-xs rounded">
+                            QR Code / Barcode<br>akan muncul di sini
+                        </div>
+                    </div>
+
+                    <!-- Print Footer -->
+                    <div class="text-center text-sm">
+                        <p>Terima kasih atas kunjungan Anda!</p>
+                        <p>Follow IG @sadigit.id</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- select printer type -->
-            <div class="flex flex-col">
-                <label for="printerType">Printer Type:</label>
-                <select id="printerType"
-                    class="rounded-lg px-4 py-4 bg-gray-200 text-lg">
-                    <option value="bluetooth" selected>Bluetooth Printer
-                        (Thermal)</option>
-                    <option value="usb">USB Printer (Thermal)</option>
-                </select>
-            </div>
+            <!-- Right Column - Controls -->
+            <div class="space-y-4">
 
-            <button id="connectToPrinter"
-                class="rounded-lg px-4 py-2 bg-gray-600 text-white">Print with
-                Bluetooth Printer</button>
+                <!-- Printer Settings -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">⚙️ Printer
+                        Settings</h2>
+
+                    <div class="space-y-4">
+                        <!-- Printer Type -->
+                        <div class="flex flex-col">
+                            <label for="printerType"
+                                class="font-semibold text-gray-700 mb-2">
+                                Printer Type:
+                            </label>
+                            <select id="printerType"
+                                class="px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="bluetooth" selected>Bluetooth
+                                    Printer</option>
+                                <option value="usb">USB Printer</option>
+                            </select>
+                        </div>
+
+                        <!-- Paper Size -->
+                        <div class="flex flex-col">
+                            <label for="paperSize"
+                                class="font-semibold text-gray-700 mb-2">
+                                Paper Size:
+                            </label>
+                            <select id="paperSize"
+                                class="px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="58">58mm</option>
+                                <option value="80" selected>80mm</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Demo Options -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">🎯 Demo
+                        Options</h2>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <!-- Basic Receipt -->
+                        <button id="printBasic"
+                            class="demo-btn px-4 py-3 text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold">
+                            📄 Basic Receipt
+                        </button>
+
+                        <!-- Receipt with QR -->
+                        <button id="printQR"
+                            class="demo-btn px-4 py-3 text-white bg-green-600 hover:bg-green-700 rounded-lg font-semibold">
+                            📱 Receipt + QR
+                        </button>
+
+                        <!-- Receipt with Barcode -->
+                        <button id="printBarcode"
+                            class="demo-btn px-4 py-3 text-white bg-purple-600 hover:bg-purple-700 rounded-lg font-semibold">
+                            📊 Receipt + Barcode
+                        </button>
+
+                        <!-- Complete Receipt -->
+                        <button id="printComplete"
+                            class="demo-btn px-4 py-3 text-white bg-red-600 hover:bg-red-700 rounded-lg font-semibold">
+                            ⭐ Complete Demo
+                        </button>
+
+                        <!-- Image Test -->
+                        <button id="printImage"
+                            class="demo-btn px-4 py-3 text-white bg-yellow-600 hover:bg-yellow-700 rounded-lg font-semibold">
+                            🖼️ Image Test
+                        </button>
+
+                        <!-- Text Formatting -->
+                        <button id="printFormatting"
+                            class="demo-btn px-4 py-3 text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg font-semibold">
+                            🎨 Text Format
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Status -->
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">📊
+                        Status</h2>
+                    <div id="status"
+                        class="text-sm text-gray-600 bg-gray-50 p-3 rounded-lg min-h-[60px]">
+                        Ready to print. Select a demo option above.
+                    </div>
+                </div>
+
+                <!-- Info -->
+                <div class="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+                    <h3 class="font-semibold text-blue-800 mb-2">ℹ️
+                        Information</h3>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• Click any demo button to connect and print</li>
+                        <li>• QR Codes support payment links and URLs</li>
+                        <li>• Barcodes auto-adjust to paper width</li>
+                        <li>• Works with Bluetooth & USB thermal printers</li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
-        <p id="status"></p>
-        <p id="battery"></p>
+        <!-- Footer -->
+        <div class="w-full max-w-6xl mt-8 text-center text-gray-600 text-sm">
+            <p>PrintHub v1.2.1 - Made with ❤️ by <a
+                    href="https://github.com/defuj"
+                    class="text-blue-600 hover:underline">Dede Fuji
+                    Abdul</a></p>
+            <p class="mt-1">
+                <a href="https://github.com/defuj/printhub"
+                    class="text-blue-600 hover:underline">GitHub</a> •
+                <a href="https://www.npmjs.com/package/printhub"
+                    class="text-blue-600 hover:underline">NPM</a> •
+                <a href="https://defuj.github.io/printhub"
+                    class="text-blue-600 hover:underline">Documentation</a>
+            </p>
+        </div>
+
         <script
-            src="https://cdn.jsdelivr.net/npm/printhub@1.0.15/dist/index.global.js"></script>
+            src="https://cdn.jsdelivr.net/npm/printhub@1.2.1/dist/index.global.js"></script>
 
-        <script>
-            let paperSize = '58';
+        <script defer>
             let printerType = 'bluetooth';
+            let paperSize = '80';
 
-            document.getElementById('paperSize').addEventListener('change', (e) => {
-                paperSize = e.target.value;
-                console.log('Paper Size Changes',paperSize);
-            });
+            // Update status
+            function updateStatus(message, type = 'info') {
+                const statusEl = document.getElementById('status');
+                const colors = {
+                    info: 'bg-blue-50 text-blue-700 border-blue-200',
+                    success: 'bg-green-50 text-green-700 border-green-200',
+                    error: 'bg-red-50 text-red-700 border-red-200',
+                    warning: 'bg-yellow-50 text-yellow-700 border-yellow-200'
+                };
+                statusEl.className = `text-sm p-3 rounded-lg min-h-[60px] border ${colors[type] || colors.info}`;
+                statusEl.textContent = message;
+            }
 
+            // Printer type change
             document.getElementById('printerType').addEventListener('change', (e) => {
                 printerType = e.target.value;
-                console.log('Printer Type Changes',printerType);
-
-                document.getElementById('connectToPrinter').textContent = `Print with ${printerType === 'bluetooth' ? 'Bluetooth' : 'USB'} Printer`;
+                updateStatus(`Printer type changed to: ${printerType === 'bluetooth' ? 'Bluetooth' : 'USB'}`, 'info');
             });
 
-            async function startPrint(print) {
+            // Paper size change
+            document.getElementById('paperSize').addEventListener('change', (e) => {
+                paperSize = e.target.value;
+                updateStatus(`Paper size changed to: ${paperSize}mm`, 'info');
+            });
+
+            // ===== PRINT FUNCTIONS =====
+
+            // 1. Basic Receipt
+            async function printBasicReceipt(print) {
+                updateStatus('Printing basic receipt...', 'info');
+                
                 await print.putImageWithUrl(
                     "https://www.sadigit.co.id/wp-content/uploads/2021/10/cropped-sadigit-logo.png",
                     { align: "center" }
                 );
-                // Print Header
                 await print.writeText("SADIGIT", {
                     align: "center",
                     bold: true,
                     size: "double",
-                    paperSize: paperSize,
                 });
                 await print.writeText(
-                    "Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel., Kabupaten Sumedang, Jawa Barat 45311",
+                    "Jl. Kutamaya No.Ruko A, Kotakulon, Kec. Sumedang Sel.",
                     { align: "center" }
                 );
+                await print.writeText("Kabupaten Sumedang, Jawa Barat 45311", { align: "center" });
                 await print.writeText("0852-2299-9699", { align: "center" });
                 await print.writeLineBreak();
-                await print.writeText("No.Transaksi: SDGT-ONL-0001", {
-                    align: "center",
-                });
+                
+                await print.writeText("No.Transaksi: SDGT-ONL-0001", { align: "center" });
                 await print.writeText("Kasir: Otongsuke", { align: "center" });
                 await print.writeText("2024-10-23 10:20:18", { align: "center" });
 
-                // Print Items
                 await print.writeDashLine();
-                for (let i = 0; i < 5; i++) {
-                    await print.writeText("Item Sample-" + i, { align: "left" });
-                    await print.writeTextWith2Column("1 pcs x 10.000", "10.000");
-                }
+                
+                await print.writeTextWith2Column("Nasi Goreng", "Rp 25.000");
+                await print.writeTextWith2Column("Es Teh Manis", "Rp 5.000");
+                await print.writeTextWith2Column("Ayam Bakar", "Rp 30.000");
+                await print.writeTextWith2Column("Sambal Extra", "Rp 3.000");
+                
                 await print.writeDashLine();
 
-                // Print Total
-                await print.writeTextWith2Column("Total :", "50.000");
-                await print.writeTextWith2Column("Bayar :", "100.000");
-                await print.writeTextWith2Column("Kembali :", "50.000");
-                await print.writeTextWith2Column("Metode :", "Tunai");
+                await print.writeTextWith2Column("Subtotal:", "Rp 63.000");
+                await print.writeTextWith2Column("Pajak (10%):", "Rp 6.300");
+                await print.writeTextWith2Column("TOTAL:", "Rp 69.300", { bold: true });
+                await print.writeTextWith2Column("Bayar:", "Rp 100.000");
+                await print.writeTextWith2Column("Kembali:", "Rp 30.700");
 
-                // Print Footer
                 await print.writeLineBreak();
-                await print.writeText(
-                    "Terimakasih sudah mencoba Follow IG @sadigit.id",
-                    { align: "center" }
-                );
-                await print.writeLineBreak(3);
+                await print.writeText("Terima kasih atas kunjungan Anda!", { align: "center" });
+                await print.writeText("Follow IG @sadigit.id", { align: "center" });
+                await print.writeLineBreak({ count: 3 });
+                
+                updateStatus('✅ Basic receipt printed successfully!', 'success');
             }
 
-            document.getElementById('connectToPrinter').addEventListener('click', () => {
+            // 2. Receipt with QR Code
+            async function printReceiptWithQR(print) {
+                updateStatus('Printing receipt with QR code...', 'info');
+                
+                await print.writeText("TOKO SAYA", { 
+                    align: "center", 
+                    bold: true, 
+                    size: "double" 
+                });
+                await print.writeText("Jl. Contoh No. 123", { align: "center" });
+                await print.writeText("Telp: 021-12345678", { align: "center" });
+                await print.writeDashLine();
+                
+                await print.writeTextWith2Column("No Invoice", "INV-0001");
+                await print.writeTextWith2Column("Tanggal", "06/10/2024");
+                await print.writeDashLine();
+                
+                await print.writeTextWith2Column("Nasi Goreng", "Rp 25.000");
+                await print.writeTextWith2Column("Es Teh", "Rp 5.000");
+                await print.writeDashLine();
+                
+                await print.writeTextWith2Column("TOTAL", "Rp 30.000", { 
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeDashLine();
+                
+                await print.writeText("SCAN UNTUK BAYAR", { 
+                    align: "center", 
+                    bold: true 
+                });
+                await print.writeLineBreak();
+                
+                await print.printQRCode("https://example.com/payment/INV-0001/Rp30000", {
+                    size: "large",
+                    align: "center",
+                    errorCorrection: "M"
+                });
+                
+                await print.writeLineBreak();
+                await print.writeText("atau bayar tunai di kasir", { align: "center" });
+                await print.writeLineBreak({ count: 3 });
+                
+                updateStatus('✅ Receipt with QR code printed successfully!', 'success');
+            }
+
+            // 3. Receipt with Barcode
+            async function printReceiptWithBarcode(print) {
+                updateStatus('Printing receipt with barcode...', 'info');
+                
+                await print.writeText("INVOICE", { 
+                    align: "center", 
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeDashLine();
+                
+                await print.writeTextWith2Column("No Invoice", "INV-20241006-001");
+                await print.writeTextWith2Column("Tanggal", "06/10/2024 15:30");
+                await print.writeTextWith2Column("Customer", "John Doe");
+                await print.writeDashLine();
+                
+                await print.writeText("Items:", { bold: true });
+                await print.writeTextWith2Column("Product A", "Rp 50.000");
+                await print.writeTextWith2Column("Product B", "Rp 30.000");
+                await print.writeTextWith2Column("Product C", "Rp 20.000");
+                await print.writeDashLine();
+                
+                await print.writeTextWith2Column("Subtotal", "Rp 100.000");
+                await print.writeTextWith2Column("Diskon", "- Rp 10.000");
+                await print.writeTextWith2Column("TOTAL", "Rp 90.000", { bold: true });
+                await print.writeDashLine();
+                
+                await print.writeText("Scan barcode untuk tracking:", { 
+                    align: "center",
+                    bold: true
+                });
+                await print.writeLineBreak();
+                
+                await print.printBarcode("INV20241006001", {
+                    format: "CODE128",
+                    height: 60,
+                    displayValue: true,
+                    align: "center"
+                });
+                
+                await print.writeLineBreak();
+                await print.writeText("Terima kasih!", { align: "center" });
+                await print.writeLineBreak({ count: 3 });
+                
+                updateStatus('✅ Receipt with barcode printed successfully!', 'success');
+            }
+
+            // 4. Complete Demo (All Features)
+            async function printCompleteDemo(print) {
+                updateStatus('Printing complete demo with all features...', 'info');
+                
+                // Header with logo
+                await print.putImageWithUrl(
+                    "https://www.sadigit.co.id/wp-content/uploads/2021/10/cropped-sadigit-logo.png",
+                    { align: "center" }
+                );
+                
+                await print.writeText("COMPLETE DEMO", { 
+                    align: "center", 
+                    bold: true, 
+                    size: "double" 
+                });
+                await print.writeText("PrintHub v1.2.1", { align: "center" });
+                await print.writeDashLine();
+                
+                // Invoice info
+                await print.writeTextWith2Column("Invoice No", "DEMO-001");
+                await print.writeTextWith2Column("Date", "06/10/2024");
+                await print.writeDashLine();
+                
+                // Items
+                await print.writeText("ITEMS:", { bold: true });
+                await print.writeTextWith2Column("Item Sample 1", "Rp 25.000");
+                await print.writeTextWith2Column("Item Sample 2", "Rp 15.000");
+                await print.writeTextWith2Column("Item Sample 3", "Rp 10.000");
+                await print.writeDashLine();
+                
+                // Total
+                await print.writeTextWith2Column("TOTAL", "Rp 50.000", { 
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeDashLine();
+                
+                // QR Code
+                await print.writeText("QRIS PAYMENT", { 
+                    align: "center", 
+                    bold: true 
+                });
+                await print.writeLineBreak();
+                
+                await print.printQRCode("https://qris.online/demo/payment/50000", {
+                    size: "large",
+                    align: "center",
+                    errorCorrection: "M"
+                });
+                
+                await print.writeLineBreak();
+                await print.writeDashLine();
+                
+                // Barcode
+                await print.writeText("INVOICE BARCODE", { 
+                    align: "center", 
+                    bold: true 
+                });
+                await print.writeLineBreak();
+                
+                await print.printBarcode("DEMO001", {
+                    format: "CODE128",
+                    height: 60,
+                    displayValue: true,
+                    align: "center"
+                });
+                
+                await print.writeLineBreak();
+                await print.writeDashLine();
+                
+                // Footer
+                await print.writeText("Thank You!", { 
+                    align: "center",
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeText("Visit again!", { align: "center" });
+                await print.writeLineBreak({ count: 3 });
+                
+                updateStatus('✅ Complete demo printed successfully!', 'success');
+            }
+
+            // 5. Image Test
+            async function printImageTest(print) {
+                updateStatus('Printing image test...', 'info');
+                
+                await print.writeText("IMAGE TEST", { 
+                    align: "center", 
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeDashLine();
+                
+                await print.writeText("Left Aligned Image:", { bold: true });
+                await print.putImageWithUrl(
+                    "https://cdn-icons-png.flaticon.com/256/2504/2504739.png",
+                    { align: "left" }
+                );
+                
+                await print.writeLineBreak();
+                await print.writeText("Center Aligned Image:", { bold: true });
+                await print.putImageWithUrl(
+                    "https://cdn-icons-png.flaticon.com/256/2504/2504739.png",
+                    { align: "center" }
+                );
+                
+                await print.writeLineBreak();
+                await print.writeText("Right Aligned Image:", { bold: true });
+                await print.putImageWithUrl(
+                    "https://cdn-icons-png.flaticon.com/256/2504/2504739.png",
+                    { align: "right" }
+                );
+                
+                await print.writeLineBreak({ count: 3 });
+                
+                updateStatus('✅ Image test printed successfully!', 'success');
+            }
+
+            // 6. Text Formatting Test
+            async function printFormattingTest(print) {
+                updateStatus('Printing text formatting test...', 'info');
+                
+                await print.writeText("TEXT FORMATTING TEST", { 
+                    align: "center", 
+                    bold: true,
+                    size: "double"
+                });
+                await print.writeDashLine();
+                
+                await print.writeText("Normal Text", { align: "left" });
+                await print.writeText("Bold Text", { align: "left", bold: true });
+                await print.writeText("Underline Text", { align: "left", underline: true });
+                await print.writeText("Bold + Underline", { align: "left", bold: true, underline: true });
+                
+                await print.writeLineBreak();
+                
+                await print.writeText("Left Aligned", { align: "left" });
+                await print.writeText("Center Aligned", { align: "center" });
+                await print.writeText("Right Aligned", { align: "right" });
+                
+                await print.writeLineBreak();
+                
+                await print.writeText("Normal Size", { align: "center" });
+                await print.writeText("Double Size", { align: "center", size: "double" });
+                
+                await print.writeLineBreak();
+                
+                await print.writeText("Two Column Test:", { bold: true });
+                await print.writeTextWith2Column("Item 1", "Rp 10.000");
+                await print.writeTextWith2Column("Item 2", "Rp 20.000");
+                await print.writeTextWith2Column("Total", "Rp 30.000", { bold: true });
+                
+                await print.writeLineBreak();
+                await print.writeDashLine();
+                await print.writeText("Line Break Test");
+                await print.writeLineBreak({ count: 5 });
+                
+                updateStatus('✅ Text formatting test printed successfully!', 'success');
+            }
+
+            // ===== EVENT LISTENERS =====
+
+            function connectAndPrint(printFunction) {
+                updateStatus('Connecting to printer...', 'warning');
+                
                 let printer = new PrintHub.init({
                     paperSize: paperSize,
                     printerType: printerType,
                 });
+                
                 printer.connectToPrint({
-                    onReady: (print) => startPrint(print),
+                    onReady: printFunction,
                     onFailed: (message) => {
-                        console.log(message);
-                        window.alert(message);
+                        updateStatus(`❌ Error: ${message}`, 'error');
+                        console.error('Print error:', message);
                     }
                 });
+            }
+
+            document.getElementById('printBasic').addEventListener('click', () => {
+                connectAndPrint(printBasicReceipt);
             });
-    </script>
+
+            document.getElementById('printQR').addEventListener('click', () => {
+                connectAndPrint(printReceiptWithQR);
+            });
+
+            document.getElementById('printBarcode').addEventListener('click', () => {
+                connectAndPrint(printReceiptWithBarcode);
+            });
+
+            document.getElementById('printComplete').addEventListener('click', () => {
+                connectAndPrint(printCompleteDemo);
+            });
+
+            document.getElementById('printImage').addEventListener('click', () => {
+                connectAndPrint(printImageTest);
+            });
+
+            document.getElementById('printFormatting').addEventListener('click', () => {
+                connectAndPrint(printFormattingTest);
+            });
+        </script>
     </body>
 </html>
