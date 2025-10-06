@@ -197,6 +197,10 @@
             });
 
             async function startPrint(print) {
+                await print.putImageWithUrl(
+                    "https://www.sadigit.co.id/wp-content/uploads/2021/10/cropped-sadigit-logo.png",
+                    { align: "center" }
+                );
                 // Print Header
                 await print.writeText("SADIGIT", {
                     align: "center",
